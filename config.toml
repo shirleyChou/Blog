@@ -14,14 +14,14 @@ authorwebsite = "http://vjeantet.fr"
 bio= "Back-end software engineer, Machine Learning and Data Mining enthusiast."
 logo = "images/logo.png"
 googleAnalyticsUserID = "UA-79101-12"
-githubName = "vjeantet"
-twitterName = "vjeantet"
+githubName = "shirleyChou"
+# twitterName = "vjeantet"
 # set true if you are not proud of using Hugo (true will hide the footer note "Proudly published with HUGO.....")
 hideHUGOSupport = false
 
 
-#[permalinks]
-#post = "/:slug/"
+[permalinks]
+post = "/:slug/"
 
 [[menu.main]]
 name = "Blog"
