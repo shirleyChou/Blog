@@ -1,52 +1,35 @@
 baseurl = "http://shirleychou.github.io/website-test/"
-languageCode = "fr-FR"
-title = "Valère JEANTET"
-paginate = 5
-DisqusShortname = "vjeantet"
-Copyright = "All rights reserved - 2016"
-theme = "casper"
+languageCode = "en-us"
+title = "John Doe's blog"
+# Define how many pages appear per site
+paginate = 10
+# Enable comments powered by Disqus by entering your disqus shortname
+disqusShortname = "spf13"
+theme = "hugo-minimalist-theme"
+
 [params]
-description = "Whatever the mind of man can conceive and believe, it can achieve."
-cover = "images/cover_polenord.jpg"
-author = "Valère JEANTET"
-authorlocation = "Paris, France"
-authorwebsite = "http://vjeantet.fr"
-bio= "IT software and Security Engineer, Open source enthusiast."
-logo = "images/logo.png"
-googleAnalyticsUserID = "UA-79101-12"
-githubName = "vjeantet"
-twitterName = "vjeantet"
-# set true if you are not proud of using Hugo (true will hide the footer note "Proudly published with HUGO.....")
-hideHUGOSupport = false
+site_author = "John Doe"
+site_description = "The awesome blog of John Doe."
+location = "Earth"
+# All paths are relative to the baseurl. Put your files
+# somewhere in the static folder.
+avatar = "img/profile-image.png"
+header_background = "img/desk.jpg"
+header_title = "Customizable header title"
+copyright = "Powered by [Hugo](http://gohugo.io)."
 
+# Enable gogle analytics by entering your tracking code
+google_analytics = ""
 
-[permalinks]
-post = "/:slug/"
-
-[[menu.main]]
-name = "Blog"
-weight = -120
-identifier = "blog"
-url = "/"
-
-[[menu.main]]
-name = "Github repos"
-weight = 100
-pre = "<h3>Follow me</h3>"
-url = "https://github.com/vjeantet"
-
-[[menu.main]]
-name = "Twitter timeline"
-weight = 101
-url = "https://twitter.com/vjeantet"
-
-[[menu.main]]
-name = "Flipboard magazines"
-weight = 102
-url = "https://flipboard.com/@vjeantet"
-
-[[menu.main]]
-name = "Keybase (secure msg)"
-weight = 109
-pre = "<h3>Contact me</h3>"
-url = "https://Keybase.io/vjeantet"
+[social]
+# Add your social network accounts to the profile section on the left
+# by entering your username. The links to your account will be
+# create automatically.
+twitter   = "spf13"
+facebook  = ""
+linkedin  = ""
+behance   = ""
+dribbble  = ""
+instagram = ""
+github    = "digitalcraftsman"
+gplus     = ""
