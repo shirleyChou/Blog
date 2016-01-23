@@ -1,4 +1,4 @@
-baseurl = "http://shirleychou.github.io/website-test/"
+baseurl = "http://shirleychou.github.io/website-test"
 title = "Ghostwriter example"
 theme = "ghostwriter"
 languageCode = "en-us"
