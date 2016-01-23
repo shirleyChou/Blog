@@ -1,17 +1,17 @@
 baseurl = "http://shirleychou.github.io/website-test/"
-languageCode = "fr-FR"
-title = "Valère JEANTET"
+languageCode = "zh-cn"
+title = "Zhou Yi"
 paginate = 5
 DisqusShortname = "vjeantet"
 Copyright = "All rights reserved - 2016"
 theme = "casper"
 [params]
-description = "Whatever the mind of man can conceive and believe, it can achieve."
+description = "Recording... Action."
 cover = "images/cover_polenord.jpg"
-author = "Valère JEANTET"
-authorlocation = "Paris, France"
+author = "Zhou Yi"
+authorlocation = "Beijing, China"
 authorwebsite = "http://vjeantet.fr"
-bio= "IT software and Security Engineer, Open source enthusiast."
+bio= "Back-end software engineer, Machine Learning and Data Mining enthusiast."
 logo = "images/logo.png"
 googleAnalyticsUserID = "UA-79101-12"
 githubName = "vjeantet"
@@ -20,8 +20,8 @@ twitterName = "vjeantet"
 hideHUGOSupport = false
 
 
-[permalinks]
-post = "/:slug/"
+#[permalinks]
+#post = "/:slug/"
 
 [[menu.main]]
 name = "Blog"
@@ -33,20 +33,5 @@ url = "/"
 name = "Github repos"
 weight = 100
 pre = "<h3>Follow me</h3>"
-url = "https://github.com/vjeantet"
+url = "https://github.com/shirleyChou"
 
-[[menu.main]]
-name = "Twitter timeline"
-weight = 101
-url = "https://twitter.com/vjeantet"
-
-[[menu.main]]
-name = "Flipboard magazines"
-weight = 102
-url = "https://flipboard.com/@vjeantet"
-
-[[menu.main]]
-name = "Keybase (secure msg)"
-weight = 109
-pre = "<h3>Contact me</h3>"
-url = "https://Keybase.io/vjeantet"
