@@ -36,14 +36,15 @@ description = "Week 1&2"
 * **Reinforcement learning**
 * **Semi-supervised Learning**
 
-### Linear Regression with one variable
+### Linear Regression 
+#### Linear Regression with one variable
 Also call **Univariate linear regression**. 
 
-#### Hypothesis
+##### Hypothesis
 Housing price data example used earlier:
 ![](https://github.com/shirleyChou/my-blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/house-prices.JPG?raw=true)
 
-And the **HYPOTHESIS** for linear regression learning algorithm is:
+So the **HYPOTHESIS** for linear regression is:
 ![](https://github.com/shirleyChou/my-blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/hypothesis.JPG?raw=true)
 
 #### Cost function  
