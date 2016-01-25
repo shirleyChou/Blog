@@ -49,11 +49,10 @@ And the **HYPOTHESIS** for linear regression is as follows, which theta are the 
 ![](https://github.com/shirleyChou/my-blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/hypo.JPG?raw=true)
 
 #### Cost function
-The idea is to choose theta_0, the_1 so that hypothesis h is **CLOSE** to y for our training examples(x, y). So **This is** a minimization problem. Our goad is to minimize:        ![](https://github.com/shirleyChou/my-blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/bias.JPG?raw=true). 
-
-And we named the part that plan to minimize **COST FUNCTION**.      
+The idea is to choose theta_0, the_1 so that hypothesis h is **CLOSE** to y for our training examples(x, y). And how do we decide whether those parameters are proper? Use **COST FUNCTION**:  
 ![](https://github.com/shirleyChou/my-blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/cost.JPG?raw=true)
 
+So **This is** a minimization problem. Our goad is to minimize the Cost function.        
 ##### parameters explanation:    
 * This is called Squared error function
 * 1/2m
