@@ -31,31 +31,19 @@ description = "Lecture 1"
   * The number (or fraction) of emails correctly classified as spam/not spam ( **P** )
 
 
-
 #### Several types of machine learning algorithms
-
 * **Supervised Learning**
-  
   Given the “right answer” for each example in the data.
-  
   * **Regression problem**
     * Predict **continuous** valued output
   * **Classification problem**
     * Predict **discrete** valued output
-  
 * **Unsupervised Learning**
-  
   Let the computer learn how to do something by thenselves.
-  
   * **Clustering problem**
-  
 * **Reinforcement learning**
-  
 * **Semi-supervised Learning**
 
-
-
 #### Linear Regression
-
 ![](/content/post/images/andrew-ng-ml/house-prices.JPG)
 
