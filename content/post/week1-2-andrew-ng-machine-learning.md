@@ -45,7 +45,7 @@ Housing price data example used earlier:
 And the **HYPOTHESIS** for linear regression is:
 ![](https://github.com/shirleyChou/my-blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/hypothesis.JPG?raw=true)
 
-The idea is to choose theta_0, the_1 so that hypothesis h is **CLOSE** to y for our training examples(x, y). But how to decide the similarity between hypothesis and the data set? The answer is **Cost function**. So **This is** a minimization problem. Our goad is to minimize ![](http://latex.codecogs.com/gif.latex?(h_{\\theta}(x)-y)^2).
+The idea is to choose theta_0, the_1 so that hypothesis h is **CLOSE** to y for our training examples(x, y). So **This is** a minimization problem. Our goad is to minimize ![](http://latex.codecogs.com/gif.latex?(h_{\\theta}(x)-y)^2). And we named the part that plan to minimize **Cost function**. 
 ![](https://github.com/shirleyChou/my-blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/cost-function.JPG?raw=true)
 
 
