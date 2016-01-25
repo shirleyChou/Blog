@@ -1,25 +1,14 @@
 +++
-
 author = "ZHOUYI"
-
 comments = true
-
 date = "2016-01-25T14:03:34+08:00"
-
 draft = false
-
 menu = ""
-
 share = true
-
 slug = "week1t&2-linear-regression"
-
 tags = ["Machine Learning", "Coursera", "Andrew Ng"]
-
 title = "Introduction regression analysis and gradient descent"
-
 description = "Week 1&2"
-
 +++
 
 #### What is machine learning?
@@ -47,17 +36,16 @@ description = "Week 1&2"
 * **Reinforcement learning**
 * **Semi-supervised Learning**
 
-### Linear Regression with one variable
-Also call **Univariate linear regression**. 
+### Linear Regression 
+Linear Regression with one variable also call **Univariate linear regression**. 
 
-#### Hypothesis
 Housing price data example used earlier:
 ![](https://github.com/shirleyChou/my-blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/house-prices.JPG?raw=true)
 
-And the **HYPOTHESIS** for linear regression learning algorithm is:
+And the **HYPOTHESIS** for linear regression is:
 ![](https://github.com/shirleyChou/my-blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/hypothesis.JPG?raw=true)
 
-#### Cost function  
-So the idea is to choose theta_0, the_1 so that hypothesis h is close to y for our training examples(x, y). e.t. **This is** a minimization problem. The goad is to minimize 
-$\sum_i=a_i$
+So the idea is to choose theta_0, the_1 so that hypothesis h is **close** to y for our training examples(x, y). And how to decide the similarity between hypotheis and data set? The answer is **Cost function**.
 
+
+i.e. **This is** a minimization problem. The goad is to minimize ![](http://latex.codecogs.com/gif.latex?(h_{\\theta}(x)-y)^2).
