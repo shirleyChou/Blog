@@ -30,20 +30,29 @@ description = "Lecture 1"
   * Watching you label emails as spam or not spam ( **E** )
   * The number (or fraction) of emails correctly classified as spam/not spam ( **P** )
 
-
 #### Several types of machine learning algorithms
+
 * **Supervised Learning**
+  
   Given the “right answer” for each example in the data.
+  
   * **Regression problem**
     * Predict **continuous** valued output
   * **Classification problem**
     * Predict **discrete** valued output
+  
 * **Unsupervised Learning**
+  
   Let the computer learn how to do something by thenselves.
+  
   * **Clustering problem**
+  
 * **Reinforcement learning**
+  
 * **Semi-supervised Learning**
 
 #### Linear Regression
-[hello](https://github.com/shirleyChou/my-blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/house-prices.JPG?raw=true)
 
+Housing price data example used earlier:
+
+![](https://github.com/shirleyChou/my-blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/house-prices.JPG?raw=true)
