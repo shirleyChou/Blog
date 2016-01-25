@@ -11,6 +11,7 @@ title = "Introduction regression analysis and gradient descent"
 description = "Week 1&2"
 +++
 
+
 #### What is machine learning?
 * **DEFINITION**:   
   Tom Mitchell (1998) Well-posed Learning Problem: A computer program is said to learn from **experience E** with respect to some **task T** and some **performance measure P**, if its performance on T, as measured by P, improves with experience E.
@@ -22,6 +23,7 @@ description = "Week 1&2"
   * Watching you label emails as spam or not spam ( **E** )
   * The number (or fraction) of emails correctly classified as spam/not spam ( **P** )
 
+
 #### Several types of machine learning algorithms
 * **Supervised Learning**
   Given the “right answer” for each example in the data.
@@ -29,12 +31,12 @@ description = "Week 1&2"
     * Predict **continuous** valued output
   * **Classification problem**
     * Predict **discrete** valued output
-  
 * **Unsupervised Learning**
   Let the computer learn how to do something by thenselves.
   * **Clustering problem**
 * **Reinforcement learning**
 * **Semi-supervised Learning**
+
 
 ### Linear Regression 
 Linear Regression with one variable also call **Univariate linear regression**. 
@@ -48,8 +50,8 @@ And the **HYPOTHESIS** for linear regression is as follows, which theta are the 
 
 
 #### Cost function
-The idea is to choose theta_0, the_1 so that hypothesis h is **CLOSE** to y for our training examples(x, y). So **This is** a minimization problem. Our goad is to minimize ![](http://latex.codecogs.com/gif.latex?(h_{\\theta}(x)-y)^2). And we named the part that plan to minimize **COST FUNCTION**.
-parameters explanation:
+The idea is to choose theta_0, the_1 so that hypothesis h is **CLOSE** to y for our training examples(x, y). So **This is** a minimization problem. Our goad is to minimize ![equation](http://latex.codecogs.com/gif.latex?(h_{\\theta}(x)-y)^2). And we named the part that plan to minimize **COST FUNCTION**.    
+parameters explanation:    
 * This is called Squared error function
 * 1/2m
   * 1/m - means we determine the average
