@@ -48,7 +48,6 @@ Housing price data example used earlier:
 And the **HYPOTHESIS** for linear regression is as follows, which theta are the parameters.    
 ![](https://github.com/shirleyChou/my-blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/hypo.JPG?raw=true)
 
-
 #### Cost function
 The idea is to choose theta_0, the_1 so that hypothesis h is **CLOSE** to y for our training examples(x, y). So **This is** a minimization problem. Our goad is to minimize:        ![](https://github.com/shirleyChou/my-blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/bias.JPG?raw=true). 
 
@@ -61,7 +60,6 @@ parameters explanation:
   * 1/m - means we determine the average
   * 1/2 - the 2 makes the math a bit easier, and doesn't change the constants we determine at all (i.e. half the smallest value is still the smallest value!)
 * Minimizing theta_0/theta_1 means we get the values of theta_0 and theta_1 which find on average the minimal deviation of x from y when we use those parameters in our hypothesis function
-
 
 #### Recap:
 * Hypothesis: like your prediction machine, throw in an x value, get a putative y value
