@@ -44,9 +44,16 @@ Housing price data example used earlier:
 
 And the **HYPOTHESIS** for linear regression is as follows, which theta are the parameters.
 ![](https://github.com/shirleyChou/my-blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/hypo.JPG?raw=true)
+Hypothesis is like your prediction machine, throw in an x value, get a putative y value
 
-The idea is to choose theta_0, the_1 so that hypothesis h is **CLOSE** to y for our training examples(x, y). So **This is** a minimization problem. Our goad is to minimize ![](http://latex.codecogs.com/gif.latex?(h_{\\theta}(x)-y)^2). And we named the part that plan to minimize **COST FUNCTION**.     
-
+The idea is to choose theta_0, the_1 so that hypothesis h is **CLOSE** to y for our training examples(x, y). So **This is** a minimization problem. Our goad is to minimize ![](http://latex.codecogs.com/gif.latex?(h_{\\theta}(x)-y)^2). And we named the part that plan to minimize **COST FUNCTION**(which also called the squared error cost function)
+parameters explanation:
+* This is called Squared error function
+* 1/2m
+  * 1/m - means we determine the average
+  * 1/2 - the 2 makes the math a bit easier, and doesn't change the constants we determine at all (i.e. half the smallest value is still the smallest value!)
+* Minimizing theta_0/theta_1 means we get the values of theta_0 and theta_1 which find on average the minimal deviation of x from y when we use those parameters in our hypothesis function
 ![](https://github.com/shirleyChou/my-blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/cost.JPG?raw=true)
+Cost is a way to, using your training data, determine values for your θ values which make the hypothesis as accurate as possible.
 
 
