@@ -1,4 +1,4 @@
-baseurl = "http://shirleychou.github.io/website/"
+baseurl = "http://shirleychou.github.io/my-blog/"
 languageCode = "zh-cn"
 title = "Zhou Yi"
 paginate = 5
