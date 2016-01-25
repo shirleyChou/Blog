@@ -1,8 +1,7 @@
-title: "CoderZh Blog"
-languageCode: "zh-CN"
-title: "Zhou Yi"
+title = "Zhou Yi"
+languageCode = "zh-CN"
 baseurl = "http://shirleychou.github.io/my-blog/"
-languageCode = "zh-cn"
+
 
 paginate = 5
 DisqusShortname = "vjeantet"
