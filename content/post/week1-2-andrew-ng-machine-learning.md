@@ -18,6 +18,8 @@ tags = ["Machine Learning", "Coursera", "Andrew Ng"]
 
 title = "week1-2 andrew ng machine learning"
 
+descriptions = "Lecture 1"
+
 +++
 
 #### what is machine learning?
@@ -32,11 +34,19 @@ title = "week1-2 andrew ng machine learning"
 
 #### Several types of machine learning algorithms
 
-> 
-
 * **Supervised Learning**
-  * Teach the computer how to do something.
+  
+  Teach the computer how to do something. e.t. "right answers" given.
+  
+  * **Regression problem**
+    * Predict **continuous** valued output
+  * **Classification problem**
+    * Predict **discrete** valued output
+  
 * **Unsupervised Learning**
+  
   * Let the computer learn how to do something by thenselves.
+  
 * **Reinforcement learning**
+  
 * **Semi-supervised Learning**
