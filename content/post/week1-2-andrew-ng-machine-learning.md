@@ -54,7 +54,7 @@ The idea is to choose theta_0, the_1 so that hypothesis h is **CLOSE** to y for 
 And we named the part that plan to minimize **COST FUNCTION**.      
 ![](https://github.com/shirleyChou/my-blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/cost.JPG?raw=true)
 
-parameters explanation:    
+##### parameters explanation:    
 * This is called Squared error function
 * 1/2m
   * 1/m - means we determine the average
