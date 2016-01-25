@@ -1,25 +1,14 @@
 +++
-
 author = "ZHOUYI"
-
 comments = true
-
 date = "2016-01-25T14:03:34+08:00"
-
 draft = false
-
 menu = ""
-
 share = true
-
 slug = "week1t&2-linear-regression"
-
 tags = ["Machine Learning", "Coursera", "Andrew Ng"]
-
 title = "Introduction regression analysis and gradient descent"
-
 description = "Week 1&2"
-
 +++
 
 #### What is machine learning?
@@ -58,6 +47,4 @@ And the **HYPOTHESIS** for linear regression learning algorithm is:
 ![](https://github.com/shirleyChou/my-blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/hypothesis.JPG?raw=true)
 
 #### Cost function  
-So the idea is to choose theta_0, the_1 so that hypothesis h is close to y for our training examples(x, y). e.t. **This is** a minimization problem. The goad is to minimize 
-
-The Arithmetic mean is equal is ![equation](http://latex.codecogs.com/gif.latex?$\frac{1}{n} \sum\_{i=i}^{n} x\_{i}$), or the sumation of n numbers divided by n.
+So the idea is to choose theta_0, the_1 so that hypothesis h is close to y for our training examples(x, y). e.t. **This is** a minimization problem. The goad is to minimize ![equation](http://latex.codecogs.com/gif.latex?(h_{\theta}(x)-y)^2), or the sumation of n numbers divided by n.
