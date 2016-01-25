@@ -42,9 +42,10 @@ Linear Regression with one variable also call **Univariate linear regression**.
 Housing price data example used earlier:
 ![](https://github.com/shirleyChou/my-blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/house-prices.JPG?raw=true)
 
-So the **HYPOTHESIS** for linear regression is:
+And the **HYPOTHESIS** for linear regression is:
 ![](https://github.com/shirleyChou/my-blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/hypothesis.JPG?raw=true)
 
-#### Cost function  
-Cost function 
-So the idea is to choose theta_0, the_1 so that hypothesis h is close to y for our training examples(x, y). i.e. **This is** a minimization problem. The goad is to minimize ![](http://latex.codecogs.com/gif.latex?(h_{\\theta}(x)-y)^2).
+So the idea is to choose theta_0, the_1 so that hypothesis h is **close** to y for our training examples(x, y). And how to decide the similarity between hypotheis and data set? The answer is **Cost function**.
+
+
+i.e. **This is** a minimization problem. The goad is to minimize ![](http://latex.codecogs.com/gif.latex?(h_{\\theta}(x)-y)^2).
