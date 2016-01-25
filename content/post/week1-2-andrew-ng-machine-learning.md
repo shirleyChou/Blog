@@ -34,16 +34,13 @@ descriptions = "Lecture 1"
 
 
 #### Several types of machine learning algorithms
-* **Supervised Learning**
+* **Supervised Learning**    
   Teach the computer how to do something. e.t. "right answers" given.
   * **Regression problem**
     * Predict **continuous** valued output
   * **Classification problem**
     * Predict **discrete** valued output
-  
-* **Unsupervised Learning**
+* **Unsupervised Learning**    
   * Let the computer learn how to do something by thenselves.
-
 * **Reinforcement learning**
-  
 * **Semi-supervised Learning**
