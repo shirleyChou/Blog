@@ -58,5 +58,5 @@ And the **HYPOTHESIS** for linear regression learning algorithm is:
 ![](https://github.com/shirleyChou/my-blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/hypothesis.JPG?raw=true)
 
 #### Cost function  
-So the idea is to choose theta_0, the_1 so that hypothesis h is close to y for our training examples(x, y). e.t. **This is** a minimization problem. The goad is to minimize 
-$$(h_{\theta}(x) - y)^2 $$
+So the idea is to choose theta_0, the_1 so that hypothesis h is close to y for our training examples(x, y). e.t. **This is** a minimization problem. The goad is to minimize <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default">$$(h_{\theta}(x) - y)^2 $$</script>
+
