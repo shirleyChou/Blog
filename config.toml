@@ -1,6 +1,7 @@
+title: "Zhou Yi"
 baseurl = "http://shirleychou.github.io/my-blog/"
 languageCode = "zh-cn"
-title = "Zhou Yi"
+
 paginate = 5
 DisqusShortname = "vjeantet"
 Copyright = "All rights reserved - 2016"
