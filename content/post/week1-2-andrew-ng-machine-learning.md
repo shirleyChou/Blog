@@ -57,5 +57,5 @@ description = "Lecture 1"
 
 #### Linear Regression
 
-![](/content/post/andrew-ng-ml/week1-2/housing-price-example.PNG)
+![](/content/post/images/andrew-ng-ml/house-prices.JPG)
 
