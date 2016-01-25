@@ -59,7 +59,7 @@ And the **HYPOTHESIS** for linear regression learning algorithm is:
 
 #### Cost function  
 So the idea is to choose theta_0, the_1 so that hypothesis h is close to y for our training examples(x, y). e.t. **This is** a minimization problem. The goad is to minimize 
-$$
-\sum_i=a_i
-$$
+
+The Arithmetic mean is equal is $\frac{1}{n} \sum\_{i=i}^{n} x\_{i}$, or the sumation of n numbers divided by n.
+
 
