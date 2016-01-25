@@ -58,10 +58,10 @@ description = "Week 1&2"
 * **Semi-supervised Learning**
 
 #### Linear Regression with one variable
-
 Also call Univariate linear regression. Housing price data example used earlier:
-
 ![](https://github.com/shirleyChou/my-blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/house-prices.JPG?raw=true)
 
 The hypothesis for linear regression learning algorithm is:
+![](https://github.com/shirleyChou/my-blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/hypothesis.JPG?raw=true)
+
 
