@@ -20,7 +20,7 @@ title = "week1-2 andrew ng machine learning"
 
 +++
 
-### what is *machine learning* ?
+#### what is machine learning?
 
 * **DEFINITION**: Tom Mitchell (1998) Well-posed Learning Problem: A computer program is said to learn from **experience E** with respect to some **task T** and some **performance measure P**, if its
   
@@ -29,16 +29,12 @@ title = "week1-2 andrew ng machine learning"
 * **EXAMPLE**: Suppose your email program watches which emails you do or do not mark as spam, and based on that learns how to better filter spam. What is the task T in this setting?
   
   * Classifying emails as spam or not spam ( **T** )
-  
-  
   * Watching you label emails as spam or not spam ( **E** )
-  
-  
   * The number (or fraction) of emails correctly classified as spam/not spam ( **P** )
 
 
 
-### Several types of machine learning algorithms
+#### Several types of machine learning algorithms
 
 * **Supervised Learning**
   
