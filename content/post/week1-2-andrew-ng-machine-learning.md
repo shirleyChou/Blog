@@ -37,10 +37,8 @@ description = "Week 1&2"
 * **Semi-supervised Learning**
 
 ### Linear Regression 
-#### Linear Regression with one variable
-Also call **Univariate linear regression**. 
+Linear Regression with one variable also call **Univariate linear regression**. 
 
-##### Hypothesis
 Housing price data example used earlier:
 ![](https://github.com/shirleyChou/my-blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/house-prices.JPG?raw=true)
 
