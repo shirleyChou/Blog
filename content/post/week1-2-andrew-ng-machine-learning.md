@@ -63,7 +63,7 @@ So **This is** a minimization problem and our **GOAL** is to minimize the Cost f
 * 1/2m
   * 1/m - means we determine the average
   * 1/2 - the 2 makes the math a bit easier, and doesn't change the constants we determine at all (i.e. half the smallest value is still the smallest value!)
-* Minimizing theta_0/theta_1 means we get the values of theta_0 and theta_1 which find on average the minimal deviation of x from y when we use those parameters in our hypothesis function
+* Minimizing θ0/θ1 means we get the values of θ0 and θ1 which find on average the minimal deviation of x from y when we use those parameters in our hypothesis function
 
 #### Recap:
 * Hypothesis: like your prediction machine, throw in an x value, get a putative y value
@@ -74,6 +74,26 @@ So **This is** a minimization problem and our **GOAL** is to minimize the Cost f
 
 
 ### A deeper insight into the cost function
-So we know that the cost function determines parameters. In order to visualize cost function J a little bit easier, we assume theta_0 = 0 and now the goal is to minimize cost function J(theta_1)     
-If we compute a range of values plot, we get a polynomial(looks like a quadratic):
-![]()
+So we know that the cost function determines parameters. In order to visualize cost function J a little bit easier, we assume θ0 = 0 and now the goal is to minimize cost function J(θ1). If we compute a range of values plot, we get a polynomial (looks like a quadratic):
+
+![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/theta_1.JPG?raw=true)
+
+The optimization objective for the learning algorithm is to find the value of θ1 which minimizes J(θ1). θ1 = 1 is the best value for θ1 here.
+
+Now we use our original complex hypothesis with two variables: J(θ0, θ1) and draw a **3D surface plot**:
+
+![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/surface-plot.JPG?raw=true)
+
+##### Notice
+* the height(y) indicates the value of the cost function, so the goal is to find where y is at a minimum.
+
+And also, we can plot a **contour plots** for better intuition:
+![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/contour.JPG?raw=true)
+
+##### Notice
+* each color is the same value of J(θ0, θ1), but obviously plot to different locations because θ1 and θ0 will vary
+* each point (like the pink one above) represents a pair of parameter values for Ɵ0 and Ɵ1
+* Finding Ɵ0 and Ɵ1 by eye/hand is in pain. What we really want is an efficient algorithm
+
+
+### Gradient descent algorithm
