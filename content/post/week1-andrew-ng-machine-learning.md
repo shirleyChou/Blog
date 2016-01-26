@@ -43,17 +43,17 @@ Linear Regression with one variable also call **Univariate linear regression**.
 
 ### Hypothesis
 Housing price data example used earlier:
-![](https://github.com/shirleyChou/my-blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/house-prices.JPG?raw=true)
+![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/house-prices.JPG?raw=true)
 
 And the **HYPOTHESIS** for linear regression is:   
-![](https://github.com/shirleyChou/my-blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/hypo.JPG?raw=true)
+![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/hypo.JPG?raw=true)
 
 Which theta0 and theta1 are the **PARAMETERS**.
 
 
 ### Cost function
 The idea is to choose theta_0, the_1 so that hypothesis h is **CLOSE** to y for our training examples(x, y). And how do we determine parameters theta? Use **COST FUNCTION**:  
-![](https://github.com/shirleyChou/my-blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/cost.JPG?raw=true)
+![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/cost.JPG?raw=true)
 
 So **This is** a minimization problem and our **GOAL** is to minimize the Cost function:  
 ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/goal.JPG?raw=true)
