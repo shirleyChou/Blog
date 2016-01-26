@@ -97,3 +97,29 @@ And also, we can plot a **contour plots** for better intuition:
 
 
 ### Gradient descent algorithm
+##### Outline
+* Start with some θ0, θ1
+* Keep changing θ0, θ1 to reduce J(θ0, θ1) until we hopefully end up at a minimum
+* And **GRADIENT DESCENT** do that work!
+##### How does it work?
+* Start with initial guesses (0,0 (or any other value))
+* Keeping changing θ0 and θ1 a little bit to try and reduce J(θ0, θ1). Each time you change the parameters, you select the gradient which reduces J(θ0,θ1) the most possible
+* Repeat
+* Do so until converge to a local minimum
+* An interesting property
+  * **Where you start** can **determine** which minimum you may end up
+  ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/local-minimum.JPG?raw=true)
+
+#### The definition of gradient descent algorithm
+![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/grad.JPG?raw=true)
+
+##### Notice
+* **HAVE TO SIMULTANEOUSLY** update j = 0 and j = 1  
+  ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/theta_update.JPG?raw=true)
+
+##### parameters explanation:
+* **derivative term**: despite the value of x (positive or negative), J(θ) will always reduce.
+  ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/derivative.JPG?raw=true)
+* **alpha (learning rate)**: the art of choosing alpha
+  ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/learning-rate.JPG?raw=true)
+
