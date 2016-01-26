@@ -10,3 +10,5 @@ tags = ["Machine Learning", "Coursera", "Andrew Ng"]
 title = "Linear Regression with multiable Variable"
 description = "Week 2"
 +++
+
+## Linear Regression with multiable Variable
