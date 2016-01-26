@@ -5,13 +5,13 @@ date = "2016-01-25T14:03:34+08:00"
 draft = false
 menu = ""
 share = true
-slug = "week1and2-linear-regression"
+slug = "linear-regression-with-one-variable"
 tags = ["Machine Learning", "Coursera", "Andrew Ng"]
-title = "Introduction regression analysis and gradient descent"
-description = "Week 1&2"
+title = "Linear Regression with One Variable"
+description = "Week 1"
 +++
 
-
+## Introduction
 #### What is machine learning?
 * **DEFINITION**:   
   Tom Mitchell (1998) Well-posed Learning Problem: A computer program is said to learn from **experience E** with respect to some **task T** and some **performance measure P**, if its performance on T, as measured by P, improves with experience E.
@@ -38,10 +38,10 @@ description = "Week 1&2"
 * **Semi-supervised Learning**
 
 
-### Linear Regression 
+## Linear Regression with One Variable
 Linear Regression with one variable also call **Univariate linear regression**. 
 
-#### Hypothesis
+### Hypothesis
 Housing price data example used earlier:
 ![](https://github.com/shirleyChou/my-blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/house-prices.JPG?raw=true)
 
@@ -51,7 +51,7 @@ And the **HYPOTHESIS** for linear regression is:
 Which theta0 and theta1 are the **PARAMETERS**.
 
 
-#### Cost function
+### Cost function
 The idea is to choose theta_0, the_1 so that hypothesis h is **CLOSE** to y for our training examples(x, y). And how do we determine parameters theta? Use **COST FUNCTION**:  
 ![](https://github.com/shirleyChou/my-blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/cost.JPG?raw=true)
 
@@ -97,29 +97,57 @@ And also, we can plot a **contour plots** for better intuition:
 
 
 ### Gradient descent algorithm
-##### Outline
+#### Outline
 * Start with some θ0, θ1
 * Keep changing θ0, θ1 to reduce J(θ0, θ1) until we hopefully end up at a minimum
 * And **GRADIENT DESCENT** do that work!
-##### How does it work?
+
+#### How does it work?
 * Start with initial guesses (0,0 (or any other value))
 * Keeping changing θ0 and θ1 a little bit to try and reduce J(θ0, θ1). Each time you change the parameters, you select the gradient which reduces J(θ0,θ1) the most possible
 * Repeat
 * Do so until converge to a local minimum
-* An interesting property
-  * **Where you start** can **determine** which minimum you may end up
-  ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/local-minimum.JPG?raw=true)
 
 #### The definition of gradient descent algorithm
 ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/grad.JPG?raw=true)
 
-##### Notice
-* **HAVE TO SIMULTANEOUSLY** update j = 0 and j = 1  
+##### parameters explanation:
+* **derivative term**: 
+    * Remember to use **partial derivative** when we have multiple variables but only derive with respect to one.
+    * Despite the value of x (positive or negative), J(θ) will always reduce. 
+    ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/derivative.JPG?raw=true)
+
+* **alpha (learning rate)**: 
+    * When you get to a local minimum, gradient of tangent/derivative is 0. So derivative term = 0 and theta remains the same. 
+    ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/learning-rate.JPG?raw=true)
+    * As we approach a local minimum, gradient descent will automatically take smaller steps. So no need to decrease alpha over time.  
+    ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/smallstep.JPG?raw=true)
+  
+
+##### Notice!
+* **HAVE TO SIMULTANEOUSLY** update j = 0 and j = 1. If you implement the non-­simultaneous update it's not gradient descent, and will behave weirdly.  
   ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/theta_update.JPG?raw=true)
 
-##### parameters explanation:
-* **derivative term**: despite the value of x (positive or negative), J(θ) will always reduce.
-  ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/derivative.JPG?raw=true)
-* **alpha (learning rate)**: the art of choosing alpha
-  ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/learning-rate.JPG?raw=true)
+* An interesting property: **Where you start** can **determine** which minimum you may end up
+  ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/local-minimum.JPG?raw=true)
 
+#### "Batch" Gradient Descent
+“Batch”: Each step of gradient descent uses all the training examples.
+
+
+### Linear regression with gradient descent
+Apply gradient descent to minimize the squared error cost function J(θ0, θ1). When we derive this expression in terms of j = 0 and j = 1 we get the following:
+![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/derive-cost.JPG?raw=true)
+
+Since the **linear regression** cost function is always a convex function(Bowl shaped), So gradient descent will always converge to **global optima**. 
+
+
+### Important extensions
+There exists a **numerical solution** for finding a solution for a minimum function - **Normal equation**. Both these two methods can solve the minimization problem. 
+
+#### Pros and cons of Normal equation
+* Advantage
+    * No longer an alpha term
+    * Can be much faster for some problems
+* Disadvantage
+    * much more complicated
