@@ -43,20 +43,20 @@ Linear Regression with one variable also call **Univariate linear regression**.
 
 ### Hypothesis
 Housing price data example used earlier:
-![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/house-prices.JPG?raw=true)
+![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/house-prices.JPG?raw=true)
 
 And the **HYPOTHESIS** for linear regression is:   
-![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/hypo.JPG?raw=true)
+![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/hypo.JPG?raw=true)
 
 Which theta0 and theta1 are the **PARAMETERS**.
 
 
 ### Cost function
 The idea is to choose theta_0, the_1 so that hypothesis h is **CLOSE** to y for our training examples(x, y). And how do we determine parameters theta? Use **COST FUNCTION**:  
-![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/cost.JPG?raw=true)
+![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/cost.JPG?raw=true)
 
 So **This is** a minimization problem and our **GOAL** is to minimize the Cost function:  
-![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/goal.JPG?raw=true)
+![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/goal.JPG?raw=true)
 
 ##### parameters explanation:    
 * This is called Squared error function
@@ -76,19 +76,19 @@ So **This is** a minimization problem and our **GOAL** is to minimize the Cost f
 ### A deeper insight into the cost function
 So we know that the cost function determines parameters. In order to visualize cost function J a little bit easier, we assume θ0 = 0 and now the goal is to minimize cost function J(θ1). If we compute a range of values plot, we get a polynomial (looks like a quadratic):
 
-![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/theta_1.JPG?raw=true)
+![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/theta_1.JPG?raw=true)
 
 The optimization objective for the learning algorithm is to find the value of θ1 which minimizes J(θ1). θ1 = 1 is the best value for θ1 here.
 
 Now we use our original complex hypothesis with two variables: J(θ0, θ1) and draw a **3D surface plot**:
 
-![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/surface-plot.JPG?raw=true)
+![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/surface-plot.JPG?raw=true)
 
 ##### Notice
 * the height(y) indicates the value of the cost function, so the goal is to find where y is at a minimum.
 
 And also, we can plot a **contour plots** for better intuition:
-![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/contour.JPG?raw=true)
+![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/contour.JPG?raw=true)
 
 ##### Notice
 * each color is the same value of J(θ0, θ1), but obviously plot to different locations because θ1 and θ0 will vary
@@ -109,27 +109,27 @@ And also, we can plot a **contour plots** for better intuition:
 * Do so until converge to a local minimum
 
 #### The definition of gradient descent algorithm
-![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/grad.JPG?raw=true)
+![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/grad.JPG?raw=true)
 
 ##### parameters explanation:
 * **derivative term**: 
     * Remember to use **partial derivative** when we have multiple variables but only derive with respect to one.
     * Despite the value of x (positive or negative), J(θ) will always reduce. 
-    ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/derivative.JPG?raw=true)
+    ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/derivative.JPG?raw=true)
 
 * **alpha (learning rate)**: 
     * When you get to a local minimum, gradient of tangent/derivative is 0. So derivative term = 0 and theta remains the same. 
-    ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/learning-rate.JPG?raw=true)
+    ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/learning-rate.JPG?raw=true)
     * As we approach a local minimum, gradient descent will automatically take smaller steps. So no need to decrease alpha over time.  
-    ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/smallstep.JPG?raw=true)
+    ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/smallstep.JPG?raw=true)
   
 
 ##### Notice!
 * **HAVE TO SIMULTANEOUSLY** update j = 0 and j = 1. If you implement the non-­simultaneous update it's not gradient descent, and will behave weirdly.  
-  ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/theta_update.JPG?raw=true)
+  ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/theta_update.JPG?raw=true)
 
 * An interesting property: **Where you start** can **determine** which minimum you may end up
-  ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/local-minimum.JPG?raw=true)
+  ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/local-minimum.JPG?raw=true)
 
 #### "Batch" Gradient Descent
 “Batch”: Each step of gradient descent uses all the training examples.
@@ -137,7 +137,7 @@ And also, we can plot a **contour plots** for better intuition:
 
 ### Linear regression with gradient descent
 Apply gradient descent to minimize the squared error cost function J(θ0, θ1). When we derive this expression in terms of j = 0 and j = 1 we get the following:
-![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1-2/derive-cost.JPG?raw=true)
+![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/derive-cost.JPG?raw=true)
 
 Since the **linear regression** cost function is always a convex function(Bowl shaped), So gradient descent will always converge to **global optima**. 
 
