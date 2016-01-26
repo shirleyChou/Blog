@@ -1,6 +1,6 @@
 title = "Zhou Yi"
 languageCode = "zh-CN"
-baseurl = "http://shirleychou.github.io/my-blog/"
+baseurl = "http://shirleychou.github.io/blog/"
 Copyright = "Copyright (c) 2016. All rights reserved."
 theme = "casper"
 paginate = 5
