@@ -89,5 +89,20 @@ We do have a broad choice on feature choosing for models.
 
 
 ### Normal equation
-Normal equation: Method to solve for analytically
+Normal equation, which for some linear regression problems, will give us a much better way to solve for the optimal value of the parameters theta.    
+Normal equation is a method to solve for theta analytically.i.e. we can instead just solve for the optimal value for theta all at one go. So basically one step you get to the optimal value right there.
 
+#### Intuition of normal equation
+![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week2/intuition.JPG?raw=true)
+
+##### Feature scaling of normal equation
+Feature scaling for normal equation is not necessary. if actually ok if:  
+![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week2/fs-nq.JPG?raw=true)
+
+#### When to use gradient descent and when to use normal equation?
+![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week2/grad-and-NE.JPG?raw=true)
+
+So if n is large, use gradient descent to avoid to pay this all in q time, but if n is relatively small, then the normal equation might give you a better way to solve the parameters.
+
+##### What does the small and large means?
+if n is in the order of a thousand, still use  normal equation. But if n is ten thousand, inverting a ten-thousand by ten-thousand matrix starts to get kind of slow. And may then to lean in the direction of gradient descent. It is hard to give a strict number. It is usually around then thousand that start to consider switching over normal equation to gradient descent.
