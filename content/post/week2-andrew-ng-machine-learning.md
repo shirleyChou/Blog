@@ -21,7 +21,7 @@ And definitely, the **HYPOTHESIS** of linear regression would change:
 where theta are parameters.
 
 ### Gradient descent for multiple variables
-so as the number of parameter grows, remember to simultaneously update theta_j for j = 0,...,n
+So as the number of parameter grows, remember to simultaneously update theta_j for j = 0,...,n
 ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week2/grad.JPG?raw=true)
 
 where **COST FUNCTION** is still the same:
@@ -80,7 +80,7 @@ Suppose for housing prices prediction problem, we have two features: frontage, d
 So sometimes by defining new features you might actually get a better model. Closing to the idea of choosing features is this idea called polynomial regression. Let's say your house price looks like this:
 ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week2/quad-and-cubic.JPG?raw=true)
 
-we can apply quadratic function or cubic function, but both of these function may not be ideal. When we use cubic function, x1, x2 and x3 take a very diffierent ranges of values, and it's important to use feature scaling if using gradient descent.
+We can apply quadratic function or cubic function, but both of these function may not be ideal. When we use cubic function, x1, x2 and x3 take a very diffierent ranges of values, and it's important to use feature scaling if using gradient descent.
 
 So we may find another reasonable choice like this:
 ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week2/ideal.JPG?raw=true)
@@ -105,4 +105,4 @@ Feature scaling for normal equation is not necessary. if actually ok if:
 So if n is large, use gradient descent to avoid to pay this all in q time, but if n is relatively small, then the normal equation might give you a better way to solve the parameters.
 
 ##### What does the small and large means?
-if n is in the order of a thousand, still use  normal equation. But if n is ten thousand, inverting a ten-thousand by ten-thousand matrix starts to get kind of slow. And may then to lean in the direction of gradient descent. It is hard to give a strict number. It is usually around then thousand that start to consider switching over normal equation to gradient descent.
+If n is in the order of a thousand, still use  normal equation. But if n is ten thousand, inverting a ten-thousand by ten-thousand matrix starts to get kind of slow. And may then to lean in the direction of gradient descent. It is hard to give a strict number. It is usually around then thousand that start to consider switching over normal equation to gradient descent.
