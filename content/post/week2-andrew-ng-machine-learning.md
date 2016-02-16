@@ -38,7 +38,7 @@ where **COST FUNCTION** is still the same:
   ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week2/range.JPG?raw=true)
 
 #### Mean normalization
-In addition to dividing by so that teh maximum value when performing feature scaling sometimes people will also do what's call mean normalization, which means that replace x with x - μ to make features have approximately zero mean(Do not apply to x0 = 1)
+In addition to dividing by so that the maximum value when performing feature scaling sometimes people will also do what's call mean normalization, which means that replace x with x - μ to make features have approximately zero mean(Do not apply to x0 = 1)
 
 ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week2/mean-normalization.JPG?raw=true)
 
@@ -59,14 +59,14 @@ In this case, we can tell gradient descent is not working
 ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week2/not-working.JPG?raw=true)
 
 
-And one useful thing that this should of plot can tell you also is that by the time you've gotten out to maybe between three hundred and four hundred iterations, it looks like that J of theta hasn't gone down much more. So it looks like that that J of theta have more or less converged because your cost function isn't going down much more. **So looking at the figure can also help you judge whether or not gradient descent has converged**.
+And one useful thing that this should of plot can tell you also is that by the time you've gotten out to maybe between three hundred and four hundred iterations, it looks like that J of theta hasn't gone down much more. So it looks like that J of theta have more or less converged because your cost function isn't going down much more. **So looking at the figure can also help you judge whether or not gradient descent has converged**.
 
-By the way, the number of iterations that gradient descent takes to converge for a particular application can vary a lot. So it is hard to tell how many iteration gradient descent needs to converge, and is usually by plotting this sort of plot to try to tell if gradient descent has converged. 
+By the way, the number of iterations that gradient descent takes to converge for a particular application can vary a lot. **So it is hard to tell how many iteration gradient descent needs to converge, and is usually by plotting this sort of plot to try to tell if gradient descent has converged**. 
 
 It is also possible to come up with **automatic convergence test**, namely to have a algorithm to try to tell you if gradient descent has converged. Say we can declare convergence if J of theta decreases by less than 10^(-3) in one iteraion. But the threshold is very difficult to decide. So maybe simply plot the figure is a proper choice.
 
 #### How to choose learning rate alpha?
-If alpha is too small, slow convergence. if alpha too large: J of theta may not decrease on every iteraion or may not converge.
+If alpha is too small, slow convergence. If alpha too large, J of theta may not decrease on every iteraion or may not converge.
 
 So when run gradient descent, try a range of values: 0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1 and pick the alpha seems to be causing J of theta to decrease rapidly.
 
@@ -90,7 +90,7 @@ We do have a broad choice on feature choosing for models.
 
 ### Normal equation
 Normal equation, which for some linear regression problems, will give us a much better way to solve for the optimal value of the parameters theta.    
-Normal equation is a method to solve for theta analytically.i.e. we can instead just solve for the optimal value for theta all at one go. So basically one step you get to the optimal value right there.
+**Normal equation is a method to solve for theta analytically.i.e. we can instead just solve for the optimal value for theta all at one go**. So basically one step you get to the optimal value right there.
 
 #### Intuition of normal equation
 ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week2/intuition.JPG?raw=true)
