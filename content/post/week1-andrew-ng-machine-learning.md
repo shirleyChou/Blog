@@ -5,72 +5,41 @@ date = "2016-01-25T14:03:34+08:00"
 draft = false
 menu = ""
 share = true
-slug = "linear-regression-with-one-variable"
-tags = ["Machine Learning", "Coursera", "Andrew Ng"]
-title = "Linear Regression with One Variable"
+slug = "linear-regression"
+tags = ["Machine Learning", "CS 229", "Andrew Ng"]
+title = "Linear Regression with one variable"
 description = "Week 1"
 +++
 
-## Introduction
-#### What is machine learning?
-* **DEFINITION**:   
-  Tom Mitchell (1998) Well-posed Learning Problem: A computer program is said to learn from **experience E** with respect to some **task T** and some **performance measure P**, if its performance on T, as measured by P, improves with experience E.
-
-* **EXAMPLE**:    
-  Suppose your email program watches which emails you do or do not mark as spam, and based on that learns how to better filter spam. What is the task T in this setting?
-  
-  * Classifying emails as spam or not spam ( **T** )
-  * Watching you label emails as spam or not spam ( **E** )
-  * The number (or fraction) of emails correctly classified as spam/not spam ( **P** )
-
-
-#### Several types of machine learning algorithms
-* **Supervised Learning**
-  Given the “right answer” for each example in the data.
-  * **Regression problem**
-    * Predict **continuous** valued output
-  * **Classification problem**
-    * Predict **discrete** valued output
-* **Unsupervised Learning**
-  Let the computer learn how to do something by thenselves.
-  * **Clustering problem**
-* **Reinforcement learning**
-* **Semi-supervised Learning**
-
-
-## Linear Regression with One Variable
-Linear Regression with one variable also call **Univariate linear regression**. 
-
-### Hypothesis
-Housing price data example used earlier:
+Let’s start by talking about a few examples of supervised learning problems. Suppose we have a dataset giving the living areas and prices of 47 houses from Portland, Oregon:
 ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/house-prices.JPG?raw=true)
 
-And the **HYPOTHESIS** for linear regression is:   
-![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/hypo.JPG?raw=true)
+To establish notation, use **x(i)**(above) to denote the "input" variables (living area in this example), also called **input features**, and **y(i)** to denote the “output” or **target variable** that we are trying to predict(price). A pair **(x(i), y(i))** is called a **training example**. And use ***X*** denote the space of input values, ***Y*** the space of output values. In this example, ***X*** = ***Y*** = ***R***.
 
-Which theta0 and theta1 are the **PARAMETERS**.
+And the goal is, given a training set, to learn a function h : ***X*** → ***Y*** so that h(x) is a "good" predictor for the corresponding value of y. This function *h* is called a **hypothesis**.
+
+To perform supervised learning, we must decide how we’re going to represent functions/hypotheses h in a computer. As an initial choice, let’s say we decide to approximate y as a linear function of x:  
+![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/hypo.JPG?raw=true)  
+Here, the θi’s are the **parameters**(also called weights) parameterizing the space of linear functions mapping from ***X*** to ***Y***.
 
 
 ### Cost function
-The idea is to choose theta_0, the_1 so that hypothesis h is **CLOSE** to y for our training examples(x, y). And how do we determine parameters theta? Use **COST FUNCTION**:  
+Now, given a training set, how do we pick, or learn, the parameters θ? One reasonable method seems to be to make h(x) close to y, at least for the training examples we have. To formalize this, we will define a function that measures, for each value of the θ’s, how close the h(x(i))’s are to the corresponding y(i)’s. We define the cost function:
+
 ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/cost.JPG?raw=true)
 
-So **This is** a minimization problem and our **GOAL** is to minimize the Cost function:  
-![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/goal.JPG?raw=true)
-
-##### parameters explanation:    
+##### Parameters explanation:    
 * This is called Squared error function
 * 1/2m
   * 1/m - means we determine the average
   * 1/2 - the 2 makes the math a bit easier, and doesn't change the constants we determine at all (i.e. half the smallest value is still the smallest value!)
 * Minimizing θ0/θ1 means we get the values of θ0 and θ1 which find on average the minimal deviation of x from y when we use those parameters in our hypothesis function
 
-#### Recap:
-* Hypothesis: like your prediction machine, throw in an x value, get a putative y value
-* Cost: a way to, using your training data, determine values for your θ values which make the hypothesis as accurate as possible
-  * Also called the squared error cost function
-  * This cost function is reasonable choice for most regression functions
-  * Probably most commonly used function
+
+##### Cost function intuition:
+* Cost function is a way to, using your training data, determine values for your θ values which make the hypothesis as accurate as possible
+* It also called the squared error cost function
+* This cost function is reasonable choice for most regression functions. And is probably most commonly used function
 
 
 ### A deeper insight into the cost function
@@ -96,32 +65,31 @@ And also, we can plot a **contour plots** for better intuition:
 * Finding Ɵ0 and Ɵ1 by eye/hand is in pain. What we really want is an efficient algorithm
 
 
-### Gradient descent algorithm
-#### Outline
-* Start with some θ0, θ1
-* Keep changing θ0, θ1 to reduce J(θ0, θ1) until we hopefully end up at a minimum
-* And **GRADIENT DESCENT** do that work!
 
+## LMS algorithm
+We want to choose θ so as to minimize J(θ). Specifically, let’s consider the **gradient descent algorithm**.
+
+### Gradient descent algorithm
 #### How does it work?
 * Start with initial guesses (0,0 (or any other value))
 * Keeping changing θ0 and θ1 a little bit to try and reduce J(θ0, θ1). Each time you change the parameters, you select the gradient which reduces J(θ0,θ1) the most possible
 * Repeat
-* Do so until converge to a local minimum
+* Do so until hopefully converge to a value of θ that minimizes J(θ)
 
 #### The definition of gradient descent algorithm
 ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/grad.JPG?raw=true)
 
-##### parameters explanation:
-* **derivative term**: 
-    * Remember to use **partial derivative** when we have multiple variables but only derive with respect to one.
-    * Despite the value of x (positive or negative), J(θ) will always reduce. 
-    ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/derivative.JPG?raw=true)
-
-* **alpha (learning rate)**: 
+##### Parameters explanation:
+* **Alpha (learning rate)**: 
     * When you get to a local minimum, gradient of tangent/derivative is 0. So derivative term = 0 and theta remains the same. 
     ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/learning-rate.JPG?raw=true)
     * As we approach a local minimum, gradient descent will automatically take smaller steps. So no need to decrease alpha over time.  
     ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/smallstep.JPG?raw=true)
+
+* **derivative term**: 
+    * Remember to use **partial derivative** when we have multiple variables but only derive with respect to one.
+    * Despite the value of x (positive or negative), J(θ) will always reduce. 
+    ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/derivative.JPG?raw=true)
   
 
 ##### Notice!
@@ -140,14 +108,3 @@ Apply gradient descent to minimize the squared error cost function J(θ0, θ1). 
 ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/derive-cost.JPG?raw=true)
 
 Since the **linear regression** cost function is always a convex function(Bowl shaped), So gradient descent will always converge to **global optima**. 
-
-
-### Important extensions
-There exists a **numerical solution** for finding a solution for a minimum function - **Normal equation**. Both these two methods can solve the minimization problem. 
-
-#### Pros and cons of Normal equation
-* Advantage
-    * No longer an alpha term
-    * Can be much faster for some problems
-* Disadvantage
-    * much more complicated

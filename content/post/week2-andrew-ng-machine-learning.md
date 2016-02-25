@@ -6,7 +6,7 @@ draft = false
 menu = ""
 share = true
 slug = "linear-regression-with-multiable-variable"
-tags = ["Machine Learning", "Coursera", "Andrew Ng"]
+tags = ["Machine Learning", "CS 229", "Andrew Ng"]
 title = "Linear Regression with multiable Variable"
 description = "Week 2"
 +++
@@ -92,12 +92,13 @@ We do have a broad choice on feature choosing for models.
 Normal equation, which for some linear regression problems, will give us a much better way to solve for the optimal value of the parameters theta.    
 **Normal equation is a method to solve for theta analytically.i.e. we can instead just solve for the optimal value for theta all at one go**. So basically one step you get to the optimal value right there.
 
+#### Formula of Normal equation
+Using this formula **does not require any feature scaling**, and you will get an exact solution in one calculation: there is no “loop until convergence” like in gradient descent.  
+![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week2/normal-equation.JPG?raw=true)  
+
 #### Intuition of normal equation
 ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week2/intuition.JPG?raw=true)
 
-##### Feature scaling of normal equation
-Feature scaling for normal equation is not necessary. if actually ok if:  
-![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week2/fs-nq.JPG?raw=true)
 
 #### When to use gradient descent and when to use normal equation?
 ![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week2/grad-and-NE.JPG?raw=true)
