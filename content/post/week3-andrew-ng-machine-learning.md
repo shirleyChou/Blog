@@ -108,5 +108,38 @@ And the goal is to minimize J of theta to get parameters θ, and then use those 
 Question: how to monitor gradient descent to make sure it's conversion correctly.
 
 
-### Advanced optimization
-some advanced optimization algorithms and some advanced optimization concepts.
+### Advanced optimization algorithms
+* Gradient descent
+* Conjugate gradient
+* BFGS
+* L-BFGS
+
+Either of these sophisticated optimization algorithms can be used to compute J of theta, and need a way to compute the derivatives, and than can use more sophisticated strategies than gradient descent to minimize the cost function. And Andrew Ng have used these algorithms like maybe over a decade. 
+
+Other three algorithms have a number of **pros and cons**.  
+##### Advantages
+* No need to manually pick alpha (automatically pick)
+* Often **faster** than gradient descent.
+
+##### Disadvantages
+* More complex
+
+
+### Multi-class classification: One-vs-all
+
+We can use logistic regression for binary classification problem:
+
+![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/binary.JPG?raw=true)
+
+But how about we have multi-class now?
+
+![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/multi-class.JPG?raw=true)
+
+Use an idea called one versus all classification, we can take this and make it work for multi-class classification.
+
+![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/one-vs-all.JPG?raw=true)
+
+The idea of One-vs-all is:
+
+![](https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/idea.JPG?raw=true)
+ 
