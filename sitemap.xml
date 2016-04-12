@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://shirleychou.github.io/blog/</loc>
+    <lastmod>2016-04-12T11:37:20+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://shirleychou.github.io/blog/2016/04/12/post-title/</loc>
+    <lastmod>2016-04-12T11:37:20+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://shirleychou.github.io/blog/2016/03/10/regularization/</loc>
+    <lastmod>2016-03-10T11:23:42+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://shirleychou.github.io/blog/2016/03/08/logistic-regression/</loc>
+    <lastmod>2016-03-08T17:54:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://shirleychou.github.io/blog/2016/02/23/machine-learning-concepts/</loc>
+    <lastmod>2016-02-23T18:02:35+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://shirleychou.github.io/blog/2016/01/26/linear-regression-with-multiable-variable/</loc>
+    <lastmod>2016-01-26T17:25:34+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://shirleychou.github.io/blog/2016/01/25/linear-regression/</loc>
+    <lastmod>2016-01-25T14:03:34+08:00</lastmod>
+  </url>
+  
+</urlset>

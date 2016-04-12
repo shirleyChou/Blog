@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Coursera on Zhou Yi</title>
+    <link>http://shirleychou.github.io/blog/tags/coursera/</link>
+    <description>Recent content in Coursera on Zhou Yi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>Copyright (c) 2016. All rights reserved.</copyright>
+    <lastBuildDate>Thu, 10 Mar 2016 11:23:42 +0800</lastBuildDate>
+    <atom:link href="http://shirleychou.github.io/blog/tags/coursera/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Regularization</title>
+      <link>http://shirleychou.github.io/blog/2016/03/10/regularization/</link>
+      <pubDate>Thu, 10 Mar 2016 11:23:42 +0800</pubDate>
+      
+      <guid>http://shirleychou.github.io/blog/2016/03/10/regularization/</guid>
+      <description>
+
+&lt;h4 id=&#34;the-problem-of-overfitting:b78a93f3befe9e730fab504843530378&#34;&gt;The problem of overfitting&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;Underfitting&lt;/strong&gt;: also called &amp;ldquo;High bias(preconception)&amp;rdquo;, which mean that it&amp;rsquo;s not even fitting the training data very well.&lt;/p&gt;
+
+&lt;p&gt;Example of linear regression:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/underfit.JPG?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Example of logistic regression:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/underfit-logistic.JPG?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Overfitting&lt;/strong&gt;: If we have too many features, the learned hypothesis may fit the training set very well (J(θ) ≈ 0), but fail to generalize(how well a hypothesis applies even to new example) to new examples (predict prices on new examples).&lt;/p&gt;
+
+&lt;p&gt;Example of linear regression:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/overfit.JPG?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Example of logistic regression:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/overfit-logistic.JPG?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;h4 id=&#34;addressing-overfitting:b78a93f3befe9e730fab504843530378&#34;&gt;Addressing overfitting&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;Plotting the hypothesis&lt;/strong&gt; can be one way to decide what degree polynomial to use. But it cannot often work, because often we have learning problems that where we just have a lot of features and it would be much harder to visualize the data.&lt;/p&gt;
+
+&lt;h5 id=&#34;so-some-options-are:b78a93f3befe9e730fab504843530378&#34;&gt;So some options are:&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Reduce number of features&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Manually select which features to keep(it may throw away some informations your have about the problem).&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Model selection algorithm (later in course).&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Regularization&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Keep all the features, but reduce magnitude/values of parameters θj.&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Works well when we have &lt;strong&gt;a lot of features&lt;/strong&gt;, each of which contributes a bit to predicting &lt;em&gt;y&lt;/em&gt;.&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;regularization:b78a93f3befe9e730fab504843530378&#34;&gt;Regularization&lt;/h3&gt;
+
+&lt;p&gt;Regularization is a way to address overfitting by making the value of parameters theta really small. so:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/intuition.JPG?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;What regularization does it to add a regularization term to the cost function J of theta, and &lt;strong&gt;λ&lt;/strong&gt; is called &lt;strong&gt;regularization parameter&lt;/strong&gt;. And what λ does it controls a trade off between two different goals. The goal of the regularization term is to keep the parameters small, and thus keep the hypothesis relatively simple to avoid overfitting. The first term of the cost function is to fit the training set well.&lt;/p&gt;
+
+&lt;h5 id=&#34;but-what-if-λ-is-set-to-an-extremely-large-value-perhaps-for-too-large-for-our-problem-say-λ-10-10:b78a93f3befe9e730fab504843530378&#34;&gt;But What if λ is set to an extremely large value (perhaps for too large for our problem, say λ = 10^(10))?&lt;/h5&gt;
+
+&lt;p&gt;Then θ1, θ2, θ3, θ4&amp;hellip; ≈ 0, hypothesis h may be underfitting (become horizontal flat line). For regularization to work well. some care should be taken, to choose a good choice for the regularization parameter λ as well.&lt;/p&gt;
+
+&lt;h3 id=&#34;regularized-linear-regression:b78a93f3befe9e730fab504843530378&#34;&gt;Regularized linear regression&lt;/h3&gt;
+
+&lt;p&gt;The goal is to minimize J of theta, &lt;strong&gt;be aware of that j is starting from 1!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/regularization.JPG?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Gradient descent&lt;/strong&gt; for regularized logistic regression is:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/theta0.JPG?raw=true&#34; alt=&#34;&#34; /&gt;
+
+&lt;img src=&#34;https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/thetaj.JPG?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The first term (1 - α * λ / m) &amp;lt; 1, so theta J times a term which is less than one has the effect of shrinking theta J a little bit towards 0. So this makes theta J a bit smaller.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Normal equation&lt;/strong&gt;
+&lt;img src=&#34;https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/normal.JPG?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Suppose m (#examples) ≤ n (#features)&lt;/strong&gt;, i.e. you have lots of features in a relatively small training set, θ would be non-invertible/singular&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/theta.JPG?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;But if λ &amp;gt; 0, θ with &lt;strong&gt;regularization term is invertible&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/theta-invertible.JPG?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;h3 id=&#34;regularized-logistic-regression:b78a93f3befe9e730fab504843530378&#34;&gt;Regularized logistic regression&lt;/h3&gt;
+
+&lt;p&gt;The cost function and the gradient descent(or maybe using Advanced optimization) is the same as Regularized linear regression except the hypothesis is &lt;strong&gt;Sigmoid function&lt;/strong&gt;!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Logistic Regression</title>
+      <link>http://shirleychou.github.io/blog/2016/03/08/logistic-regression/</link>
+      <pubDate>Tue, 08 Mar 2016 17:54:57 +0800</pubDate>
+      
+      <guid>http://shirleychou.github.io/blog/2016/03/08/logistic-regression/</guid>
+      <description>
+
+&lt;h3 id=&#34;logistic-regression-model:e3b7e24ffdafc5eafaa5482fd2cd2bf7&#34;&gt;Logistic Regression Model&lt;/h3&gt;
+
+&lt;p&gt;Logistic regression is a classification algorithm. It generates a value where is between 0 and 1.&lt;/p&gt;
+
+&lt;p&gt;And the hypothesis(function) of logistic regression is:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/function.JPG?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;i.e.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/hypothesis.JPG?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The hypothesis is alse called &amp;ldquo;&lt;strong&gt;Sigmoid function&lt;/strong&gt;&amp;rdquo;, or &amp;ldquo;&lt;strong&gt;Logistic function&lt;/strong&gt;&amp;rdquo;. The term &lt;code&gt;Logistic function&lt;/code&gt; is what give rise to the name logistic progression. The term &lt;code&gt;Sigmoid function&lt;/code&gt; and the term &lt;code&gt;Logistic function&lt;/code&gt; are basically synonyms and mean the same thing. So either term can be used to refer to the function g.&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;Sigmoid function&lt;/strong&gt; looks like:&lt;br /&gt;
+&lt;img src=&#34;https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/graph.JPG?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;h5 id=&#34;so-when-make-predictions-that-y-1-or-0:e3b7e24ffdafc5eafaa5482fd2cd2bf7&#34;&gt;So, when make predictions that y = 1(or 0)?&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;when g(z) ≥ 0.5, z ≥ 0, predict &amp;ldquo;y = 1&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;when g(z) ≤ 0.5, z ≤ 0, predict &amp;ldquo;y = 0&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;interpretation-of-hypothesis-output:e3b7e24ffdafc5eafaa5482fd2cd2bf7&#34;&gt;Interpretation of Hypothesis Output&lt;/h4&gt;
+
+&lt;p&gt;When hypothesis outputs some number, we going to treat that number as the estimated probability that Y = 1 on a new input example X. Here is an example (y = 1 === malignant):&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/example.JPG?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;To write in more formally, we say hypothesis h(x) is the probability that y = 1, given x,
+parameterized by theta:
+&amp;gt; h(x) = P(y = 1 | x; theta) = 0.7&lt;/p&gt;
+
+&lt;p&gt;So, we also know that:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/probability.JPG?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The first equation is saying that the probability of Y equals zero for a particular patient with feature x, plus probability of Y equals one for that same patient must add up to one.&lt;/p&gt;
+
+&lt;h3 id=&#34;decision-boundary:e3b7e24ffdafc5eafaa5482fd2cd2bf7&#34;&gt;Decision Boundary&lt;/h3&gt;
+
+&lt;p&gt;Let&amp;rsquo;s say we decide the hypothesis is h(x) with θ0 = -3, θ1 = 1 and θ2 = 1. &lt;strong&gt;Decision boundary&lt;/strong&gt; is the line when z = θ.T.dot(X) = 0.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/decision-boundary.JPG?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Decision boundary can also be non-linear.It can look like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/db1.JPG?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Or looks like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/db2.JPG?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The shape of the decision boundary is decided by z.&lt;/p&gt;
+
+&lt;h3 id=&#34;cost-function:e3b7e24ffdafc5eafaa5482fd2cd2bf7&#34;&gt;Cost function&lt;/h3&gt;
+
+&lt;p&gt;We cannot use the cost function of linear regression for logistic regression, since the cost function of linear regression with hypothesis of logistic regression would be a &lt;strong&gt;non-convex&lt;/strong&gt; function of the parameters theta. So it &lt;strong&gt;not guarantee to converge to the global minimum&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Cost function of linear regression below:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/linear-cost-function.JPG?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The meaning of non-convex&lt;/strong&gt; is that it could have many &lt;strong&gt;local optima&lt;/strong&gt;. And &lt;strong&gt;non-convex&lt;/strong&gt; is its formal term.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/not-convex.JPG?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The cost function that is &lt;strong&gt;&amp;ldquo;convex&amp;rdquo;&lt;/strong&gt; for the cost function is:
+&lt;img src=&#34;https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/cost-function-logistic.JPG?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;And we plot these two cost function respectively when y = 1 and y = 0.&lt;/p&gt;
+
+&lt;p&gt;If y = 1:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/y=1.JPG?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;If y = 0:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/y=0.JPG?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;h3 id=&#34;simplified-cost-function-and-gradient-descent:e3b7e24ffdafc5eafaa5482fd2cd2bf7&#34;&gt;Simplified cost function and gradient descent&lt;/h3&gt;
+
+&lt;p&gt;So, combine y we can get the cost function of logistic regression as follows:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/combine.JPG?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;And the goal is to minimize J of theta to get parameters θ, and then use those parameters to make a prediction given new x.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Gradient descent&lt;/strong&gt; for cost function of logistic regression is:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/grad.JPG?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Algorithm looks identical to linear regression!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Question: how to monitor gradient descent to make sure it&amp;rsquo;s conversion correctly.&lt;/p&gt;
+
+&lt;h3 id=&#34;advanced-optimization-algorithms:e3b7e24ffdafc5eafaa5482fd2cd2bf7&#34;&gt;Advanced optimization algorithms&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Gradient descent&lt;/li&gt;
+&lt;li&gt;Conjugate gradient&lt;/li&gt;
+&lt;li&gt;BFGS&lt;/li&gt;
+&lt;li&gt;L-BFGS&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Either of these sophisticated optimization algorithms can be used to compute J of theta, and need a way to compute the derivatives, and than can use more sophisticated strategies than gradient descent to minimize the cost function. And Andrew Ng have used these algorithms like maybe over a decade.&lt;/p&gt;
+
+&lt;p&gt;Other three algorithms have a number of &lt;strong&gt;pros and cons&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h5 id=&#34;advantages:e3b7e24ffdafc5eafaa5482fd2cd2bf7&#34;&gt;Advantages&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;No need to manually pick alpha (automatically pick)&lt;/li&gt;
+&lt;li&gt;Often &lt;strong&gt;faster&lt;/strong&gt; than gradient descent.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;disadvantages:e3b7e24ffdafc5eafaa5482fd2cd2bf7&#34;&gt;Disadvantages&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;More complex&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;multi-class-classification-one-vs-all:e3b7e24ffdafc5eafaa5482fd2cd2bf7&#34;&gt;Multi-class classification: One-vs-all&lt;/h3&gt;
+
+&lt;p&gt;We can use logistic regression for binary classification problem:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/binary.JPG?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;But how about we have multi-class now?&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/multi-class.JPG?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Use an idea called one versus all classification, we can take this and make it work for multi-class classification.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/one-vs-all.JPG?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The idea of One-vs-all is:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/idea.JPG?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Machine learning concepts</title>
+      <link>http://shirleychou.github.io/blog/2016/02/23/machine-learning-concepts/</link>
+      <pubDate>Tue, 23 Feb 2016 18:02:35 +0800</pubDate>
+      
+      <guid>http://shirleychou.github.io/blog/2016/02/23/machine-learning-concepts/</guid>
+      <description>
+
+&lt;h2 id=&#34;introduction:89540e760d9dd0d7af01f229ce6a96f5&#34;&gt;Introduction&lt;/h2&gt;
+
+&lt;h4 id=&#34;what-is-machine-learning:89540e760d9dd0d7af01f229ce6a96f5&#34;&gt;What is machine learning?&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;DEFINITION&lt;/strong&gt;:&lt;br /&gt;
+Tom Mitchell (1998) Well-posed Learning Problem: A computer program is said to learn from &lt;strong&gt;experience E&lt;/strong&gt; with respect to some &lt;strong&gt;task T&lt;/strong&gt; and some &lt;strong&gt;performance measure P&lt;/strong&gt;, if its performance on T, as measured by P, improves with experience E.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;EXAMPLE&lt;/strong&gt;:&lt;br /&gt;
+Suppose your email program watches which emails you do or do not mark as spam, and based on that learns how to better filter spam. What is the task T in this setting?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Classifying emails as spam or not spam ( &lt;strong&gt;T&lt;/strong&gt; )&lt;/li&gt;
+&lt;li&gt;Watching you label emails as spam or not spam ( &lt;strong&gt;E&lt;/strong&gt; )&lt;/li&gt;
+&lt;li&gt;The number (or fraction) of emails correctly classified as spam/not spam ( &lt;strong&gt;P&lt;/strong&gt; )&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;several-types-of-machine-learning-algorithms:89540e760d9dd0d7af01f229ce6a96f5&#34;&gt;Several types of machine learning algorithms&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Supervised Learning&lt;/strong&gt;&lt;br /&gt;
+Given the “right answer” for each example in the data.
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Regression problem&lt;/strong&gt;&lt;br /&gt;
+The target variable that we’re trying to predict is continuous&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Classification problem&lt;/strong&gt;&lt;br /&gt;
+The target variable that we’re trying to predict is discrete&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Unsupervised Learning&lt;/strong&gt;&lt;br /&gt;
+Let the computer learn how to do something by thenselves.
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Clustering problem&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Reinforcement learning&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Semi-supervised Learning&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

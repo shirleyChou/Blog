@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  	<meta property="og:title" content=" Linear Regression with one variable &middot;  Zhou Yi" />
+  	<meta property="og:site_name" content="Zhou Yi" />
+  	<meta property="og:url" content="http://shirleychou.github.io/blog/2016/01/25/linear-regression/" />
+
+    
+  	<meta property="og:type" content="article" />
+
+    <meta property="og:article:published_time" content="2016-01-25T14:03:34&#43;08:00" />
+
+    
+    <meta property="og:article:tag" content="Machine Learning" />
+    
+    <meta property="og:article:tag" content="CS 229" />
+    
+    <meta property="og:article:tag" content="Andrew Ng" />
+    
+    
+
+  <title>
+     Linear Regression with one variable &middot;  Zhou Yi
+  </title>
+
+    <meta name="description" content="Recording... Action!" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://shirleychou.github.io/blog/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://shirleychou.github.io/blog/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://shirleychou.github.io/blog/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://shirleychou.github.io/blog/css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata" />
+
+
+    
+      
+          <link href="http://shirleychou.github.io/blog/index.xml" rel="alternate" type="application/rss+xml" title="Zhou Yi" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.14" />
+
+    <link rel="canonical" href="http://shirleychou.github.io/blog/2016/01/25/linear-regression/" />
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-79101-12', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="/blog/">Blog</a>
+            </li>
+        
+            <h3>Follow me</h3>
+            <li class="nav-opened" role="presentation">
+            	<a href="https://github.com/shirleyChou">Github repos</a>
+            </li>
+        
+    </ul>
+    
+    
+    <a class="subscribe-button icon-feed" href="http://shirleychou.github.io/blog/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://shirleychou.github.io/blog/"><img src="http://shirleychou.github.io/blog/images/logo.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Linear Regression with one variable</h1>
+        <small>Week 1</small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2016-01-25T14:03:34&#43;08:00">
+            Jan 25, 2016
+          </time>
+        
+         
+          <span class="post-tag small"><a href="http://shirleychou.github.io/blog/tags/machine-learning/">#Machine Learning</a></span>
+         
+          <span class="post-tag small"><a href="http://shirleychou.github.io/blog/tags/cs-229/">#CS 229</a></span>
+         
+          <span class="post-tag small"><a href="http://shirleychou.github.io/blog/tags/andrew-ng/">#Andrew Ng</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<p>Let’s start by talking about a few examples of supervised learning problems. Suppose we have a dataset giving the living areas and prices of 47 houses from Portland, Oregon:
+<img src="https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/house-prices.JPG?raw=true" alt="" />
+</p>
+
+<p>To establish notation, use <strong>x(i)</strong>(above) to denote the &ldquo;input&rdquo; variables (living area in this example), also called <strong>input features</strong>, and <strong>y(i)</strong> to denote the “output” or <strong>target variable</strong> that we are trying to predict(price). A pair <strong>(x(i), y(i))</strong> is called a <strong>training example</strong>. And use <strong><em>X</em></strong> denote the space of input values, <strong><em>Y</em></strong> the space of output values. In this example, <strong><em>X</em></strong> = <strong><em>Y</em></strong> = <strong><em>R</em></strong>.</p>
+
+<p>And the goal is, given a training set, to learn a function h : <strong><em>X</em></strong> → <strong><em>Y</em></strong> so that h(x) is a &ldquo;good&rdquo; predictor for the corresponding value of y. This function <em>h</em> is called a <strong>hypothesis</strong>.</p>
+
+<p>To perform supervised learning, we must decide how we’re going to represent functions/hypotheses h in a computer. As an initial choice, let’s say we decide to approximate y as a linear function of x:<br />
+<img src="https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/hypo.JPG?raw=true" alt="" />
+<br />
+Here, the θi’s are the <strong>parameters</strong>(also called weights) parameterizing the space of linear functions mapping from <strong><em>X</em></strong> to <strong><em>Y</em></strong>.</p>
+
+<h3 id="cost-function:2b2db294fcac5ab3df0f477bdb61214d">Cost function</h3>
+
+<p>Now, given a training set, how do we pick, or learn, the parameters θ? One reasonable method seems to be to make h(x) close to y, at least for the training examples we have. To formalize this, we will define a function that measures, for each value of the θ’s, how close the h(x(i))’s are to the corresponding y(i)’s. We define the cost function:</p>
+
+<p><img src="https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/cost.JPG?raw=true" alt="" />
+</p>
+
+<h5 id="parameters-explanation:2b2db294fcac5ab3df0f477bdb61214d">Parameters explanation:</h5>
+
+<ul>
+<li>This is called Squared error function</li>
+<li>1/2m
+
+<ul>
+<li>1/m - means we determine the average</li>
+<li><sup>1</sup>&frasl;<sub>2</sub> - the 2 makes the math a bit easier, and doesn&rsquo;t change the constants we determine at all (i.e. half the smallest value is still the smallest value!)</li>
+</ul></li>
+<li>Minimizing θ0/θ1 means we get the values of θ0 and θ1 which find on average the minimal deviation of x from y when we use those parameters in our hypothesis function</li>
+</ul>
+
+<h5 id="cost-function-intuition:2b2db294fcac5ab3df0f477bdb61214d">Cost function intuition:</h5>
+
+<ul>
+<li>Cost function is a way to, using your training data, determine values for your θ values which make the hypothesis as accurate as possible</li>
+<li>It also called the squared error cost function</li>
+<li>This cost function is reasonable choice for most regression functions. And is probably most commonly used function</li>
+</ul>
+
+<h3 id="a-deeper-insight-into-the-cost-function:2b2db294fcac5ab3df0f477bdb61214d">A deeper insight into the cost function</h3>
+
+<p>So we know that the cost function determines parameters. In order to visualize cost function J a little bit easier, we assume θ0 = 0 and now the goal is to minimize cost function J(θ1). If we compute a range of values plot, we get a polynomial (looks like a quadratic):</p>
+
+<p><img src="https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/theta_1.JPG?raw=true" alt="" />
+</p>
+
+<p>The optimization objective for the learning algorithm is to find the value of θ1 which minimizes J(θ1). θ1 = 1 is the best value for θ1 here.</p>
+
+<p>Now we use our original complex hypothesis with two variables: J(θ0, θ1) and draw a <strong>3D surface plot</strong>:</p>
+
+<p><img src="https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/surface-plot.JPG?raw=true" alt="" />
+</p>
+
+<h5 id="notice:2b2db294fcac5ab3df0f477bdb61214d">Notice</h5>
+
+<ul>
+<li>the height(y) indicates the value of the cost function, so the goal is to find where y is at a minimum.</li>
+</ul>
+
+<p>And also, we can plot a <strong>contour plots</strong> for better intuition:
+<img src="https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/contour.JPG?raw=true" alt="" />
+</p>
+
+<h5 id="notice-1:2b2db294fcac5ab3df0f477bdb61214d">Notice</h5>
+
+<ul>
+<li>each color is the same value of J(θ0, θ1), but obviously plot to different locations because θ1 and θ0 will vary</li>
+<li>each point (like the pink one above) represents a pair of parameter values for Ɵ0 and Ɵ1</li>
+<li>Finding Ɵ0 and Ɵ1 by eye/hand is in pain. What we really want is an efficient algorithm</li>
+</ul>
+
+<h2 id="lms-algorithm:2b2db294fcac5ab3df0f477bdb61214d">LMS algorithm</h2>
+
+<p>We want to choose θ so as to minimize J(θ). Specifically, let’s consider the <strong>gradient descent algorithm</strong>.</p>
+
+<h3 id="gradient-descent-algorithm:2b2db294fcac5ab3df0f477bdb61214d">Gradient descent algorithm</h3>
+
+<h4 id="how-does-it-work:2b2db294fcac5ab3df0f477bdb61214d">How does it work?</h4>
+
+<ul>
+<li>Start with initial guesses (0,0 (or any other value))</li>
+<li>Keeping changing θ0 and θ1 a little bit to try and reduce J(θ0, θ1). Each time you change the parameters, you select the gradient which reduces J(θ0,θ1) the most possible</li>
+<li>Repeat</li>
+<li>Do so until hopefully converge to a value of θ that minimizes J(θ)</li>
+</ul>
+
+<h4 id="the-definition-of-gradient-descent-algorithm:2b2db294fcac5ab3df0f477bdb61214d">The definition of gradient descent algorithm</h4>
+
+<p><img src="https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/grad.JPG?raw=true" alt="" />
+</p>
+
+<h5 id="parameters-explanation-1:2b2db294fcac5ab3df0f477bdb61214d">Parameters explanation:</h5>
+
+<ul>
+<li><p><strong>Alpha (learning rate)</strong>:</p>
+
+<ul>
+<li>When you get to a local minimum, gradient of tangent/derivative is 0. So derivative term = 0 and theta remains the same.
+<img src="https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/learning-rate.JPG?raw=true" alt="" /></li>
+<li>As we approach a local minimum, gradient descent will automatically take smaller steps. So no need to decrease alpha over time.<br />
+<img src="https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/smallstep.JPG?raw=true" alt="" /></li>
+</ul></li>
+
+<li><p><strong>derivative term</strong>:</p>
+
+<ul>
+<li>Remember to use <strong>partial derivative</strong> when we have multiple variables but only derive with respect to one.</li>
+<li>Despite the value of x (positive or negative), J(θ) will always reduce.
+<img src="https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/derivative.JPG?raw=true" alt="" /></li>
+</ul></li>
+</ul>
+
+<h5 id="notice-2:2b2db294fcac5ab3df0f477bdb61214d">Notice!</h5>
+
+<ul>
+<li><p><strong>HAVE TO SIMULTANEOUSLY</strong> update j = 0 and j = 1. If you implement the non-­simultaneous update it&rsquo;s not gradient descent, and will behave weirdly.<br />
+<img src="https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/theta_update.JPG?raw=true" alt="" />
+</p></li>
+
+<li><p>An interesting property: <strong>Where you start</strong> can <strong>determine</strong> which minimum you may end up
+<img src="https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/local-minimum.JPG?raw=true" alt="" />
+</p></li>
+</ul>
+
+<h4 id="batch-gradient-descent:2b2db294fcac5ab3df0f477bdb61214d">&ldquo;Batch&rdquo; Gradient Descent</h4>
+
+<p>“Batch”: Each step of gradient descent uses all the training examples.</p>
+
+<h3 id="linear-regression-with-gradient-descent:2b2db294fcac5ab3df0f477bdb61214d">Linear regression with gradient descent</h3>
+
+<p>Apply gradient descent to minimize the squared error cost function J(θ0, θ1). When we derive this expression in terms of j = 0 and j = 1 we get the following:
+<img src="https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week1/derive-cost.JPG?raw=true" alt="" />
+</p>
+
+<p>Since the <strong>linear regression</strong> cost function is always a convex function(Bowl shaped), So gradient descent will always converge to <strong>global optima</strong>.</p>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+    <figure class="author-image">
+        <a class="img" href="http://shirleychou.github.io/blog/" style="background-image: url(http://shirleychou.github.io/blog/images/logo.png)"><span class="hidden">Zhou Yi's Picture</span></a>
+    </figure>
+    
+
+    
+
+
+
+
+
+<section class="author">
+  <h4><a href="http://shirleychou.github.io/blog/">Zhou Yi</a></h4>
+  
+  <p>Back-end software engineer, Machine Learning and Data Mining enthusiast.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Beijing, China</span>
+    
+  </div>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Linear%20Regression%20with%20one%20variable&amp;url=http%3a%2f%2fshirleychou.github.io%2fblog%2f2016%2f01%2f25%2flinear-regression%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fshirleychou.github.io%2fblog%2f2016%2f01%2f25%2flinear-regression%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fshirleychou.github.io%2fblog%2f2016%2f01%2f25%2flinear-regression%2f&amp;description=Linear%20Regression%20with%20one%20variable"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fshirleychou.github.io%2fblog%2f2016%2f01%2f25%2flinear-regression%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'shirley';
+  var disqus_url = 'http:\/\/shirleychou.github.io\/blog\/2016\/01\/25\/linear-regression\/';
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+  </footer>
+</article>
+
+</main>
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Zhou Yi</a> Copyright (c) 2016. All rights reserved.</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://shirleychou.github.io/blog/js/jquery.js"></script>
+    <script type="text/javascript" src="http://shirleychou.github.io/blog/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://shirleychou.github.io/blog/js/index.js"></script>
+    
+</body>
+</html>
+

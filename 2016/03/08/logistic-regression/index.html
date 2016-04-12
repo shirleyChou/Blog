@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  	<meta property="og:title" content=" Logistic Regression &middot;  Zhou Yi" />
+  	<meta property="og:site_name" content="Zhou Yi" />
+  	<meta property="og:url" content="http://shirleychou.github.io/blog/2016/03/08/logistic-regression/" />
+
+    
+  	<meta property="og:type" content="article" />
+
+    <meta property="og:article:published_time" content="2016-03-08T17:54:57&#43;08:00" />
+
+    
+    <meta property="og:article:tag" content="Machine Learning" />
+    
+    <meta property="og:article:tag" content="Coursera" />
+    
+    <meta property="og:article:tag" content="Andrew Ng" />
+    
+    
+
+  <title>
+     Logistic Regression &middot;  Zhou Yi
+  </title>
+
+    <meta name="description" content="Recording... Action!" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://shirleychou.github.io/blog/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://shirleychou.github.io/blog/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://shirleychou.github.io/blog/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://shirleychou.github.io/blog/css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata" />
+
+
+    
+      
+          <link href="http://shirleychou.github.io/blog/index.xml" rel="alternate" type="application/rss+xml" title="Zhou Yi" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.14" />
+
+    <link rel="canonical" href="http://shirleychou.github.io/blog/2016/03/08/logistic-regression/" />
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-79101-12', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="/blog/">Blog</a>
+            </li>
+        
+            <h3>Follow me</h3>
+            <li class="nav-opened" role="presentation">
+            	<a href="https://github.com/shirleyChou">Github repos</a>
+            </li>
+        
+    </ul>
+    
+    
+    <a class="subscribe-button icon-feed" href="http://shirleychou.github.io/blog/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://shirleychou.github.io/blog/"><img src="http://shirleychou.github.io/blog/images/logo.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Logistic Regression</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2016-03-08T17:54:57&#43;08:00">
+            Mar 8, 2016
+          </time>
+        
+         
+          <span class="post-tag small"><a href="http://shirleychou.github.io/blog/tags/machine-learning/">#Machine Learning</a></span>
+         
+          <span class="post-tag small"><a href="http://shirleychou.github.io/blog/tags/coursera/">#Coursera</a></span>
+         
+          <span class="post-tag small"><a href="http://shirleychou.github.io/blog/tags/andrew-ng/">#Andrew Ng</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<h3 id="logistic-regression-model:e3b7e24ffdafc5eafaa5482fd2cd2bf7">Logistic Regression Model</h3>
+
+<p>Logistic regression is a classification algorithm. It generates a value where is between 0 and 1.</p>
+
+<p>And the hypothesis(function) of logistic regression is:</p>
+
+<p><img src="https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/function.JPG?raw=true" alt="" />
+</p>
+
+<p>i.e.</p>
+
+<p><img src="https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/hypothesis.JPG?raw=true" alt="" />
+</p>
+
+<p>The hypothesis is alse called &ldquo;<strong>Sigmoid function</strong>&rdquo;, or &ldquo;<strong>Logistic function</strong>&rdquo;. The term <code>Logistic function</code> is what give rise to the name logistic progression. The term <code>Sigmoid function</code> and the term <code>Logistic function</code> are basically synonyms and mean the same thing. So either term can be used to refer to the function g.</p>
+
+<p>The <strong>Sigmoid function</strong> looks like:<br />
+<img src="https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/graph.JPG?raw=true" alt="" />
+</p>
+
+<h5 id="so-when-make-predictions-that-y-1-or-0:e3b7e24ffdafc5eafaa5482fd2cd2bf7">So, when make predictions that y = 1(or 0)?</h5>
+
+<ul>
+<li>when g(z) ≥ 0.5, z ≥ 0, predict &ldquo;y = 1&rdquo;</li>
+<li>when g(z) ≤ 0.5, z ≤ 0, predict &ldquo;y = 0&rdquo;</li>
+</ul>
+
+<h4 id="interpretation-of-hypothesis-output:e3b7e24ffdafc5eafaa5482fd2cd2bf7">Interpretation of Hypothesis Output</h4>
+
+<p>When hypothesis outputs some number, we going to treat that number as the estimated probability that Y = 1 on a new input example X. Here is an example (y = 1 === malignant):</p>
+
+<p><img src="https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/example.JPG?raw=true" alt="" />
+</p>
+
+<p>To write in more formally, we say hypothesis h(x) is the probability that y = 1, given x,
+parameterized by theta:
+&gt; h(x) = P(y = 1 | x; theta) = 0.7</p>
+
+<p>So, we also know that:</p>
+
+<p><img src="https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/probability.JPG?raw=true" alt="" />
+</p>
+
+<p>The first equation is saying that the probability of Y equals zero for a particular patient with feature x, plus probability of Y equals one for that same patient must add up to one.</p>
+
+<h3 id="decision-boundary:e3b7e24ffdafc5eafaa5482fd2cd2bf7">Decision Boundary</h3>
+
+<p>Let&rsquo;s say we decide the hypothesis is h(x) with θ0 = -3, θ1 = 1 and θ2 = 1. <strong>Decision boundary</strong> is the line when z = θ.T.dot(X) = 0.</p>
+
+<p><img src="https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/decision-boundary.JPG?raw=true" alt="" />
+</p>
+
+<p>Decision boundary can also be non-linear.It can look like this:</p>
+
+<p><img src="https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/db1.JPG?raw=true" alt="" />
+</p>
+
+<p>Or looks like this:</p>
+
+<p><img src="https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/db2.JPG?raw=true" alt="" />
+</p>
+
+<p>The shape of the decision boundary is decided by z.</p>
+
+<h3 id="cost-function:e3b7e24ffdafc5eafaa5482fd2cd2bf7">Cost function</h3>
+
+<p>We cannot use the cost function of linear regression for logistic regression, since the cost function of linear regression with hypothesis of logistic regression would be a <strong>non-convex</strong> function of the parameters theta. So it <strong>not guarantee to converge to the global minimum</strong>.</p>
+
+<p>Cost function of linear regression below:</p>
+
+<p><img src="https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/linear-cost-function.JPG?raw=true" alt="" />
+</p>
+
+<p><strong>The meaning of non-convex</strong> is that it could have many <strong>local optima</strong>. And <strong>non-convex</strong> is its formal term.</p>
+
+<p><img src="https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/not-convex.JPG?raw=true" alt="" />
+</p>
+
+<p>The cost function that is <strong>&ldquo;convex&rdquo;</strong> for the cost function is:
+<img src="https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/cost-function-logistic.JPG?raw=true" alt="" />
+</p>
+
+<p>And we plot these two cost function respectively when y = 1 and y = 0.</p>
+
+<p>If y = 1:</p>
+
+<p><img src="https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/y=1.JPG?raw=true" alt="" />
+</p>
+
+<p>If y = 0:</p>
+
+<p><img src="https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/y=0.JPG?raw=true" alt="" />
+</p>
+
+<h3 id="simplified-cost-function-and-gradient-descent:e3b7e24ffdafc5eafaa5482fd2cd2bf7">Simplified cost function and gradient descent</h3>
+
+<p>So, combine y we can get the cost function of logistic regression as follows:</p>
+
+<p><img src="https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/combine.JPG?raw=true" alt="" />
+</p>
+
+<p>And the goal is to minimize J of theta to get parameters θ, and then use those parameters to make a prediction given new x.</p>
+
+<p><strong>Gradient descent</strong> for cost function of logistic regression is:</p>
+
+<p><img src="https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/grad.JPG?raw=true" alt="" />
+</p>
+
+<p><strong>Algorithm looks identical to linear regression!</strong></p>
+
+<p>Question: how to monitor gradient descent to make sure it&rsquo;s conversion correctly.</p>
+
+<h3 id="advanced-optimization-algorithms:e3b7e24ffdafc5eafaa5482fd2cd2bf7">Advanced optimization algorithms</h3>
+
+<ul>
+<li>Gradient descent</li>
+<li>Conjugate gradient</li>
+<li>BFGS</li>
+<li>L-BFGS</li>
+</ul>
+
+<p>Either of these sophisticated optimization algorithms can be used to compute J of theta, and need a way to compute the derivatives, and than can use more sophisticated strategies than gradient descent to minimize the cost function. And Andrew Ng have used these algorithms like maybe over a decade.</p>
+
+<p>Other three algorithms have a number of <strong>pros and cons</strong>.</p>
+
+<h5 id="advantages:e3b7e24ffdafc5eafaa5482fd2cd2bf7">Advantages</h5>
+
+<ul>
+<li>No need to manually pick alpha (automatically pick)</li>
+<li>Often <strong>faster</strong> than gradient descent.</li>
+</ul>
+
+<h5 id="disadvantages:e3b7e24ffdafc5eafaa5482fd2cd2bf7">Disadvantages</h5>
+
+<ul>
+<li>More complex</li>
+</ul>
+
+<h3 id="multi-class-classification-one-vs-all:e3b7e24ffdafc5eafaa5482fd2cd2bf7">Multi-class classification: One-vs-all</h3>
+
+<p>We can use logistic regression for binary classification problem:</p>
+
+<p><img src="https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/binary.JPG?raw=true" alt="" />
+</p>
+
+<p>But how about we have multi-class now?</p>
+
+<p><img src="https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/multi-class.JPG?raw=true" alt="" />
+</p>
+
+<p>Use an idea called one versus all classification, we can take this and make it work for multi-class classification.</p>
+
+<p><img src="https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/one-vs-all.JPG?raw=true" alt="" />
+</p>
+
+<p>The idea of One-vs-all is:</p>
+
+<p><img src="https://github.com/shirleyChou/blog/blob/master/static/content/post/images/andrew-ng-ml/week3/idea.JPG?raw=true" alt="" />
+</p>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+    <figure class="author-image">
+        <a class="img" href="http://shirleychou.github.io/blog/" style="background-image: url(http://shirleychou.github.io/blog/images/logo.png)"><span class="hidden">Zhou Yi's Picture</span></a>
+    </figure>
+    
+
+    
+
+
+
+
+
+<section class="author">
+  <h4><a href="http://shirleychou.github.io/blog/">Zhou Yi</a></h4>
+  
+  <p>Back-end software engineer, Machine Learning and Data Mining enthusiast.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Beijing, China</span>
+    
+  </div>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Logistic%20Regression&amp;url=http%3a%2f%2fshirleychou.github.io%2fblog%2f2016%2f03%2f08%2flogistic-regression%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fshirleychou.github.io%2fblog%2f2016%2f03%2f08%2flogistic-regression%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fshirleychou.github.io%2fblog%2f2016%2f03%2f08%2flogistic-regression%2f&amp;description=Logistic%20Regression"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fshirleychou.github.io%2fblog%2f2016%2f03%2f08%2flogistic-regression%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'shirley';
+  var disqus_url = 'http:\/\/shirleychou.github.io\/blog\/2016\/03\/08\/logistic-regression\/';
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+  </footer>
+</article>
+
+</main>
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Zhou Yi</a> Copyright (c) 2016. All rights reserved.</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://shirleychou.github.io/blog/js/jquery.js"></script>
+    <script type="text/javascript" src="http://shirleychou.github.io/blog/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://shirleychou.github.io/blog/js/index.js"></script>
+    
+</body>
+</html>
+

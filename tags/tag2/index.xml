@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tag2 on Zhou Yi</title>
+    <link>http://shirleychou.github.io/blog/tags/tag2/</link>
+    <description>Recent content in Tag2 on Zhou Yi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>Copyright (c) 2016. All rights reserved.</copyright>
+    <lastBuildDate>Tue, 12 Apr 2016 11:37:20 +0800</lastBuildDate>
+    <atom:link href="http://shirleychou.github.io/blog/tags/tag2/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>decision tree</title>
+      <link>http://shirleychou.github.io/blog/2016/04/12/post-title/</link>
+      <pubDate>Tue, 12 Apr 2016 11:37:20 +0800</pubDate>
+      
+      <guid>http://shirleychou.github.io/blog/2016/04/12/post-title/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
